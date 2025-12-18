@@ -1,5 +1,6 @@
-package com.e_library.library_service.contoller;
+package com.e_library.library_service.controller;
 
+import com.e_library.library_service.dto.AddBookRequest;
 import com.e_library.library_service.dto.LibraryDto;
 import com.e_library.library_service.service.LibraryService;
 import org.springframework.http.ResponseEntity;
@@ -24,5 +25,11 @@ public class LibraryController {
     @PostMapping
     public ResponseEntity<LibraryDto> createLibrary() {
         return ResponseEntity.ok(libraryService.createLibrary());
+    }
+
+    @PutMapping
+    public ResponseEntity<Void> addBookToLibrary(@RequestBody AddBookRequest request){
+        libraryService.addBookToLibrary(request);
+        return ResponseEntity.ok().build();
     }
 }

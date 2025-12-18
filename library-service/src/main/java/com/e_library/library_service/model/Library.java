@@ -19,5 +19,5 @@ public class Library {
     private UUID id;
 
     @ElementCollection
-    private List<String> userBook = new ArrayList<>();
+    private List<UUID> userBook = new ArrayList<>();
 }
