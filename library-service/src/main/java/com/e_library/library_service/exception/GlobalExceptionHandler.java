@@ -11,6 +11,20 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(LibraryNotFoundException.class)
     public ResponseEntity<?> handle(LibraryNotFoundException exception) {
         return new ResponseEntity<>(exception.getMessage(), HttpStatus.NOT_FOUND);
+    }
 
+    @ExceptionHandler(BookNotFoundException.class)
+    public ResponseEntity<ExceptionMessage> handle(BookNotFoundException exception) {
+        ExceptionMessage message = exception.getExceptionMessage();
+        HttpStatus status = HttpStatus.NOT_FOUND;
+
+        if (message != null) {
+            HttpStatus resolvedStatus = HttpStatus.resolve(message.status());
+            if (resolvedStatus != null) {
+                status = resolvedStatus;
+            }
+        }
+
+        return new ResponseEntity<>(message, status);
     }
 }
