@@ -15,9 +15,11 @@ public class LibraryServiceApplication {
 		SpringApplication.run(LibraryServiceApplication.class, args);
 	}
 
+	/*
+	//Feign Client Error Handling
 	@Bean
 	public ErrorDecoder errorDecoder() {
 		return new RetrieveMessageErrorDecoder();
 	}
-
+	*/
 }
